@@ -1,0 +1,3 @@
+abstract class {{#pascalCase}}{{name}}{{/pascalCase}}Repository {
+
+}
