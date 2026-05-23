@@ -1,115 +1,185 @@
-# flutter_bricks
+# Flutter Bricks Setup Guide
 
-# Step 1:Exiting project first create file:
+## Step 1: Create `mason.yaml`
+
+Inside your existing Flutter project, create a file named:
+
+```yaml
 mason.yaml
+```
 
-# Step 2: Open mason.yaml file
-Add this details in this files:
+---
 
+## Step 2: Add Brick Configuration
+
+Open `mason.yaml` and add the following configuration:
+
+```yaml
 bricks:
   feature:
     path: /Users/muzammilmodan/Documents/GitHub/flutter_bricks/feature
+```
 
+---
 
+## Step 3: Install Mason Dependencies
 
-# Step 3: open terminal:
+Open terminal inside your Flutter project and run:
+
+```bash
 mason get
+```
 
-# Step 4
-Run: mason make feature Then enter: login
+---
 
+## Step 4: Generate Feature Module
 
+Run:
 
-## -----------------------------------
+```bash
+mason make feature
+```
 
-### If data already exit and need to change so below step follow
+Then enter feature name when prompted:
 
-# 1. Verify current mason.yaml
+```bash
+login
+```
 
-### Run:
+---
 
+# If Existing Data Is Not Updating
+
+Follow the steps below.
+
+---
+
+# 1. Verify Current `mason.yaml`
+
+Run:
+
+```bash
 cat mason.yaml
+```
 
+Expected output:
 
-### Make sure output is exactly:
-
+```yaml
 bricks:
-feature:
-path: /Users/muzammilmodan/Documents/GitHub/flutter_bricks/feature
+  feature:
+    path: /Users/muzammilmodan/Documents/GitHub/flutter_bricks/feature
+```
 
-# 2. Check brick structure
+---
 
-### Inside your feature folder, Mason requires:
+# 2. Verify Brick Structure
 
+Inside `feature/` folder Mason requires:
+
+```text
 feature/
 ├── brick.yaml
 ├── __brick__/
+```
 
-### Run:
+Run:
 
+```bash
 ls /Users/muzammilmodan/Documents/GitHub/flutter_bricks/feature
+```
 
-### You should see:
+Expected output:
 
+```text
 brick.yaml
 __brick__
+```
 
-If brick.yaml is missing, create it.
+---
 
-Example:
+## If `brick.yaml` Is Missing
 
+Create `brick.yaml` with this content:
+
+```yaml
 name: feature
 description: A new Flutter feature module
 version: 0.1.0
+
 vars:
-feature_name:
-type: string
-description: Feature name
+  feature_name:
+    type: string
+    description: Feature name
+```
 
+---
 
-# 3. Clear Mason cache
+# 3. Clear Mason Cache
 
-### Run:
+Run:
 
+```bash
 mason cache clear
+```
 
-### Then:
+Then run again:
 
+```bash
 mason get
+```
 
+---
 
-# 4. Verify current directory
+# 4. Verify Current Project Directory
 
-Sometimes wrong project folder has old mason.yaml.
+Sometimes terminal is opened in wrong project folder.
 
-### Check:
+Check current directory:
 
+```bash
 pwd
+```
 
-### And verify:
+Verify project files:
 
+```bash
 ls
+```
 
-contains your correct mason.yaml.
+Make sure `mason.yaml` exists in this directory.
 
-# 5. Recommended relative path
+---
 
-### Instead of absolute path, use relative path:
+# 5. Recommended Relative Path
 
+Instead of absolute path, use relative path.
+
+Update `mason.yaml`:
+
+```yaml
 bricks:
-feature:
-path: ../flutter_bricks/feature
+  feature:
+    path: ../flutter_bricks/feature
+```
 
 This avoids Mac path issues when moving projects.
 
-Final expected structure
+---
+
+# Final Expected Structure
+
+```text
 flutter_bricks/
 └── feature/
-├── brick.yaml
-└── __brick__/
-└── ...
+    ├── brick.yaml
+    └── __brick__/
+```
 
-## Then run:
+---
 
+# Final Commands
+
+```bash
 mason get
 mason make feature
+```
